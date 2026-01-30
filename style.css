@@ -1,8 +1,19 @@
 /* =====================================================
-   1. Base animated gradient
+   Base animated gradient
    - Multi-color gradient
    - Large background size to allow motion
    ===================================================== */
+
+* {
+  font-family: 'Carattere', cursive;
+}
+.carattere-regular {
+  font-family: "Carattere", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .bg-gradient{
   background: linear-gradient(
     270deg,
@@ -19,7 +30,7 @@
 }
 
 /* =====================================================
-   2. Horizontal gradient animation
+   Horizontal gradient animation
    - Moves left → right → left, randomizing positions visually
    ===================================================== */
 @keyframes gradientShift {
@@ -34,17 +45,15 @@
   100% { background-position: 15% 55%; }
 }
 /* =====================================================
-   6. Full-screen utility
+   Full-screen utility
    - Makes background fill the viewport
    ===================================================== */
 .full-screen {
   min-height: 100vh;
 }
 
-
-
 /* =====================================================
-   7. Site Header
+   Site Header
    - Styles for the site header including title and nav
    ===================================================== */
 .site-header{
@@ -80,7 +89,6 @@
   line-height: 1;
 }
 
-
 .nav a {
   position: relative;
   overflow: hidden;
@@ -100,10 +108,6 @@
   font-weight: 600;
   transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
 }
-
-
-
-
 .nav a::before {
   content: "";
   position: absolute;
@@ -120,9 +124,6 @@
 
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.55));
 }
-
-
-
 .nav a::after {
   content: "";
   position: absolute;
@@ -139,8 +140,6 @@
 
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.45));
 }
-
-
 .nav a:hover::before {
   opacity: 1;
   animation: twinkleA 1.8s ease-in-out infinite;
@@ -150,8 +149,6 @@
   opacity: 1;
   animation: twinkleB 1.8s ease-in-out infinite;
 }
-
-
 
 @keyframes twinkleA {
   0%   { opacity: 0.1; }
