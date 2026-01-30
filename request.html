@@ -34,9 +34,54 @@
       </div>
     </header>
 
-    <!-- MAIN (page-specific content) -->
-    <main class="content">
-      <!-- page content goes here -->
+   
+    <main>
+
+
+      <section class="contact">
+  <div class="contact__inner">
+
+    
+    <p class="contact__subtitle">
+      Please provide as much detail as possible. Our Dragon placeement agents will review your request and reach out if we believe you're a good fit for one of our dragons.
+    </p>
+
+    <form class="contact-form" novalidate>
+
+      <label class="form-field">
+        <span>Your Name</span>
+        <input type="text" id="name" placeholder="Your Name">
+      </label>
+
+      <label class="form-field">
+        <span>Email Address</span>
+        <input type="email" id="email" placeholder="jane@email.com">
+      </label>
+
+      <label class="form-field">
+        <span>Which Dragon are you requesting?</span>
+        <textarea id="message" rows="5" placeholder="Describe the dragon, timeline, temperament, etc."></textarea>
+      </label>
+
+          <label class="form-field">
+        <span>Why do you believe you would be a good fit for this dragon?</span>
+        <textarea id="message" rows="5" placeholder="Provide as much detail as possible."></textarea>
+      </label>
+
+      <p class="form-error" id="messageError">
+        Please enter at least 30 characters.
+      </p>
+
+      <button type="submit" class="form-button">
+        Submit Request
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+
     </main>
 
     <!-- FOOTER -->
