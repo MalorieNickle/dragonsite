@@ -99,13 +99,65 @@
   padding: 0 24px 16px;
 }
 
+/* ---- Good baseline so padding doesn't cause overflow ---- */
+* { box-sizing: border-box; }
+
+/* Optional: remove default body margin that can cause tiny overflows */
+body { margin: 0; }
+
+/* ---- Responsive font sizing ---- */
 .page-title {
   margin: 0;
   color: white;
-  text-align: center;         
+  text-align: center;
   line-height: 1;
+
+  /* was 4em (too big on mobile). This scales nicely */
+  font-size: clamp(2rem, 4vw, 4rem);
 }
 
+.nav {
+  /* was 1.5em, this scales */
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+
+  /* make it responsive */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---- Header container ---- */
+.site-header{
+  background-color: #00000088;
+  width: 100%;
+
+  /* remove the hard height so it can grow when nav wraps */
+  height: auto;
+
+  /* give it minimum height for your design */
+  min-height: 150px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* center vertically instead of forcing bottom */
+  gap: 16px;
+
+  padding: 16px 24px;
+}
+
+/* ---- Nav buttons: allow them to shrink a bit and wrap ---- */
 .nav a {
   position: relative;
   overflow: hidden;
@@ -114,18 +166,36 @@
   align-items: center;
   justify-content: center;
 
-  padding: 0.75rem 1.5rem;
+  /* slightly smaller padding so 5 links fit better on smaller widths */
+  padding: 0.6rem 1.1rem;
   border-radius: 8px;
- 
 
   background-color: rgb(39, 4, 61);
   color: rgb(178, 83, 223);
   text-decoration: none;
 
-  
- 
   transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+
+  /* important: prevents long text like "Request a Dragon" from breaking layout */
+  white-space: nowrap;
 }
+
+/* ---- Mobile polish: stack buttons full width if needed ---- */
+@media (max-width: 520px) {
+  .header-inner {
+    padding: 12px 14px;
+  }
+
+  .nav {
+    gap: 10px;
+  }
+
+  .nav a {
+    width: 100%;
+    max-width: 420px; /* keeps it from being insanely wide on tablets */
+  }
+}
+
 .nav a::before {
   content: "";
   position: absolute;
@@ -435,13 +505,26 @@
     font-size: 3rem;
 }
 
+
+
+:root {
+  --home-banner-h: clamp(160px, 30vh, 320px);
+}
+
 .home-image {
   position: fixed;
-  bottom: 0.2rem;
+  bottom: 0;
   left: 0;
 
   width: 100%;
-  height: 300px;
+  height: var(--home-banner-h);
   object-fit: cover;
-  z-index: 10;
+  display: block;
+
+  z-index: 1; /* keep it low so header/nav stays above */
+}
+
+/* reserve space so the footer/content isn't hidden behind the fixed image */
+main {
+  padding-bottom: calc(var(--home-banner-h) + 24px);
 }
